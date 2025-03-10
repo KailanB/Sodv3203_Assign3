@@ -1,29 +1,102 @@
 <resources>
     <string name="app_name">Sodv3203_Assign3</string>
 
-    <string name="dailyTip1">Daily tip 1.</string>
-    <string name="dailyTip2">Daily tip 2.</string>
-    <string name="dailyTip3">Each day is a new opportunity to grow and be a better version of myself.</string>
-    <string name="dailyTip4">Every challenge in my life is an opportunity to learn from.</string>
-    <string name="dailyTip5">I have so much to be grateful for.</string>
-    <string name="dailyTip6">Good things are always coming into my life.</string>
-    <string name="dailyTip7">New opportunities await me at every turn.</string>
-    <string name="dailyTip8">I have the courage to follow my heart.</string>
-    <string name="dailyTip9">Things will unfold at precisely the right time.</string>
-    <string name="dailyTip10">I will be present in all the moments that this day brings.</string>
+    <string name="riddle1">I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?</string>
+    <string name="riddle2">I have keys but can\'t open locks. I have space but no room. You can enter, but you can\'t go outside. What am I?</string>
+    <string name="riddle3">What has hands but can\'t clap?</string>
+    <string name="riddle4">What comes once in a minute, twice in a moment, but never in a thousand years?</string>
+    <string name="riddle5">I can be cracked, made, told, and played. What am I?</string>
+    <string name="riddle6">The more you take, the more you leave behind. What am I?</string>
+    <string name="riddle7">I fly without wings. I cry without eyes. Wherever I go, darkness follows me. What am I?</string>
+    <string name="riddle8">I have an endless supply of letters but can\'t write a single word. What am I?</string>
+    <string name="riddle9">I shave every day, but my beard stays the same. What am I?</string>
+    <string name="riddle10">What has to be broken before you can use it?</string>
+    <string name="riddle11">What has one eye but can\'t see?</string>
+    <string name="riddle12">What can travel around the world while staying in the same spot?</string>
+    <string name="riddle13">What gets wetter as it dries?</string>
+    <string name="riddle14">What has four legs in the morning, two legs in the afternoon, and three legs in the evening?</string>
+    <string name="riddle15">I have branches, but no fruit, trunk, or leaves. What am I?</string>
+    <string name="riddle16">What has a heart that doesn\'t beat?</string>
+    <string name="riddle17">I am not alive, but I can grow. I don\'t have lungs, but I need air. What am I?</string>
+    <string name="riddle18">I have a neck but no head, and I wear a cap. What am I?</string>
+    <string name="riddle19">What belongs to you but others use it more than you do?</string>
+    <string name="riddle20">The more you feed me, the smaller I become. What am I?</string>
+    <string name="riddle21">What comes down but never goes up?</string>
+    <string name="riddle22">I am tall when I am young, and short when I am old. What am I?</string>
+    <string name="riddle23">What can fill a room but takes up no space?</string>
+    <string name="riddle24">I go up but never come down. What am I?</string>
+    <string name="riddle25">What has a head, a tail, is brown, and has no legs?</string>
+    <string name="riddle26">What has keys but can\'t open locks?</string>
+    <string name="riddle27">What has many teeth but can\'t bite?</string>
+    <string name="riddle28">What runs but never walks, has a bed but never sleeps?</string>
+    <string name="riddle29">What can you catch but not throw?</string>
+    <string name="riddle30">What has cities, but no houses; forests, but no trees; and rivers, but no water?</string>
+
+
+    <string name="riddleAnswer1">An echo</string>
+    <string name="riddleAnswer2">A keyboard</string>
+    <string name="riddleAnswer3">A clock</string>
+    <string name="riddleAnswer4">The letter \'M\'</string>
+    <string name="riddleAnswer5">A joke</string>
+    <string name="riddleAnswer6">Footsteps</string>
+    <string name="riddleAnswer7">A cloud</string>
+    <string name="riddleAnswer8">A mailbox</string>
+    <string name="riddleAnswer9">A barber</string>
+    <string name="riddleAnswer10">An egg</string>
+    <string name="riddleAnswer11">A needle</string>
+    <string name="riddleAnswer12">A stamp</string>
+    <string name="riddleAnswer13">A towel</string>
+    <string name="riddleAnswer14">A human (crawling as a baby, walking as an adult, using a cane in old age)</string>
+    <string name="riddleAnswer15">A bank</string>
+    <string name="riddleAnswer16">An artichoke</string>
+    <string name="riddleAnswer17">A fire</string>
+    <string name="riddleAnswer18">A bottle</string>
+    <string name="riddleAnswer19">Your name</string>
+    <string name="riddleAnswer20">A candle</string>
+    <string name="riddleAnswer21">Rain</string>
+    <string name="riddleAnswer22">A candle</string>
+    <string name="riddleAnswer23">Light</string>
+    <string name="riddleAnswer24">Your age</string>
+    <string name="riddleAnswer25">A penny</string>
+    <string name="riddleAnswer26">A piano</string>
+    <string name="riddleAnswer27">A comb</string>
+    <string name="riddleAnswer28">A river</string>
+    <string name="riddleAnswer29">A cold</string>
+    <string name="riddleAnswer30">A map</string>
+
+
+    <string name="imageDescription1">An echo</string>
+    <string name="imageDescription2">A computer keyboard</string>
+    <string name="imageDescription3">A clock</string>
+    <string name="imageDescription4">The letter M</string>
+    <string name="imageDescription5">A Comedy Scene</string>
+    <string name="imageDescription6">Tracks in the Snow</string>
+    <string name="imageDescription7">Cloud</string>
+    <string name="imageDescription8">Mailbox</string>
+    <string name="imageDescription9">Man cutting hair</string>
+    <string name="imageDescription10">An Egg</string>
+    <string name="imageDescription11">Needle and Thread</string>
+    <string name="imageDescription12">Postage Stamp</string>
+    <string name="imageDescription13">Bathroom with Towels</string>
+    <string name="imageDescription14">Human aging</string>
+    <string name="imageDescription15">Bank</string>
+    <string name="imageDescription16">Artichoke on a plate</string>
+    <string name="imageDescription17">Fireplace</string>
+    <string name="imageDescription18">Message in a Bottle</string>
+    <string name="imageDescription19">Your Name</string>
+    <string name="imageDescription20">Candle</string>
+    <string name="imageDescription21">City raining scene</string>
+    <string name="imageDescription22">Candle</string>
+    <string name="imageDescription23">Light breaking through clouds</string>
+    <string name="imageDescription24">Birthday Cake</string>
+    <string name="imageDescription25">A Penny</string>
+    <string name="imageDescription26">Piano</string>
+    <string name="imageDescription27">Comb</string>
+    <string name="imageDescription28">River</string>
+    <string name="imageDescription29">Sick Person</string>
+    <string name="imageDescription30">Map</string>
 
 
 
-
-    <string name="dailyTipImageDescription1">I am strong.</string>
-    <string name="dailyTipImageDescription2">I believe in myself.</string>
-    <string name="dailyTipImageDescription3">Each day is a new opportunity to grow and be a better version of myself.</string>
-    <string name="dailyTipImageDescription4">Every challenge in my life is an opportunity to learn from.</string>
-    <string name="dailyTipImageDescription5">I have so much to be grateful for.</string>
-    <string name="dailyTipImageDescription6">Good things are always coming into my life.</string>
-    <string name="dailyTipImageDescription7">New opportunities await me at every turn.</string>
-    <string name="dailyTipImageDescription8">I have the courage to follow my heart.</string>
-    <string name="dailyTipImageDescription9">Things will unfold at precisely the right time.</string>
-    <string name="dailyTipImageDescription10">I will be present in all the moments that this day brings.</string>
 
 </resources>
