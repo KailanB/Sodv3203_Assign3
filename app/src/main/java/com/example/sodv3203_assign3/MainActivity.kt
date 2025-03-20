@@ -77,7 +77,7 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}Recording-20250319_230451
+}
 
 @Composable
 fun DailyRiddlesApp(modifier: Modifier = Modifier) {
