@@ -1,16 +1,21 @@
 package com.example.sodv3203_assign3
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -24,6 +29,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -37,6 +44,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -55,12 +63,14 @@ class MainActivity : ComponentActivity() {
             Sodv3203_Assign3Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column(
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier
+                            .padding(innerPadding)
+                            .background(color = MaterialTheme.colorScheme.primary)
                     ){
                         Spacer(modifier = Modifier.height(24.dp))
 
 
-                        DailyTipsApp(
+                        DailyRiddlesApp(
                             modifier = Modifier.padding(innerPadding)
                         )
                     }
@@ -72,7 +82,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun DailyTipsApp(modifier: Modifier = Modifier) {
+fun DailyRiddlesApp(modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -80,15 +90,16 @@ fun DailyTipsApp(modifier: Modifier = Modifier) {
     ){
         Text(
             text = "Daily Riddles",
-            style = MaterialTheme.typography.titleLarge
+            color = MaterialTheme.colorScheme.primaryContainer,
+            style = MaterialTheme.typography.displayLarge
         )
         Spacer(modifier = Modifier.height(16.dp))
-        TipList(dailyRiddleList = Datasource().loadDailyRiddleData())
+        RiddleList(dailyRiddleList = Datasource().loadDailyRiddleData())
     }
 }
 
 @Composable
-fun TipList(
+fun RiddleList(
     dailyRiddleList: List<DailyRiddle>
 ) {
     LazyColumn(){
@@ -108,33 +119,56 @@ fun TipList(
 fun RiddleCard(dailyRiddle: DailyRiddle, modifier: Modifier = Modifier){
 
     var expanded by remember { mutableStateOf(false) }
+    var isVisible by remember {mutableStateOf(false) }
 
     val varColor by animateColorAsState(
-        targetValue = if(expanded)MaterialTheme.colorScheme.primaryContainer
-        else MaterialTheme.colorScheme.inversePrimary
+        targetValue = if(expanded)MaterialTheme.colorScheme.tertiaryContainer
+        else MaterialTheme.colorScheme.primaryContainer
     )
 
     Card(
         modifier = modifier
+
     ){
         Column(
-            modifier = Modifier.animateContentSize(
-                animationSpec = spring(
-                    stiffness = Spring.StiffnessHigh,
-                    dampingRatio = Spring.DampingRatioHighBouncy
+            modifier = Modifier
+                .animateContentSize(
+                    animationSpec = spring(
+                        stiffness = Spring.StiffnessLow,
+                        dampingRatio = Spring.DampingRatioLowBouncy
+                    )
                 )
-            )
+                .fillMaxWidth()
                 // use color variable
                 .background(color = varColor)
         ){
-            Image(
-                painter = painterResource(dailyRiddle.imageResourceId),
-                contentDescription = stringResource(dailyRiddle.imageDescription),
-                modifier = Modifier.fillMaxWidth()
-                    .height(180.dp),
-                contentScale = ContentScale.Crop
+            Row(){
+                DailyRiddleHintButton(
+                    isVisible = isVisible,
+                    onClick = {isVisible = !isVisible}
+                )
+                Text(
+                    text = "Hint",
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.padding(12.dp)
+                )
+            }
+            AnimatedVisibility(
+                visible = isVisible,
+                enter = scaleIn(),
+                exit = scaleOut()
+            ){
+                Image(
+                    painter = painterResource(dailyRiddle.imageResourceId),
+                    contentDescription = stringResource(dailyRiddle.imageDescription),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(180.dp),
+                    contentScale = ContentScale.Crop
 
-            )
+                )
+            }
+
             Text(
                 text = stringResource(dailyRiddle.stringResourceRiddle),
                 style = MaterialTheme.typography.bodyLarge,
@@ -147,7 +181,7 @@ fun RiddleCard(dailyRiddle: DailyRiddle, modifier: Modifier = Modifier){
                 )
                 Text(
                     text = "Answer",
-                    style = MaterialTheme.typography.bodyLarge,
+                    style = MaterialTheme.typography.titleLarge,
                     modifier = Modifier.padding(12.dp)
                 )
             }
@@ -176,9 +210,31 @@ fun DailyRiddleAnswerDropdownButton(
         Icon(
             imageVector = if(expanded) Icons.Filled.KeyboardArrowUp
             else Icons.Filled.KeyboardArrowDown,
-            contentDescription = null,
+            contentDescription = "Arrow Icon",
             modifier = Modifier.size(48.dp),
-            // tint = MaterialTheme.colorScheme.onBackground
+            tint = MaterialTheme.colorScheme.tertiary
+        )
+    }
+
+}
+
+@Composable
+fun DailyRiddleHintButton(
+    isVisible: Boolean,
+    onClick: ()->Unit
+){
+
+
+    IconButton(
+        onClick = onClick
+    ){
+
+        Icon(
+            imageVector = if(isVisible) Icons.Filled.Close
+            else Icons.Filled.Star,
+            contentDescription = "Star Icon",
+            modifier = Modifier.size(48.dp),
+            tint = MaterialTheme.colorScheme.tertiary
         )
     }
 
@@ -203,6 +259,6 @@ fun RiddleAnswer(
 @Composable
 fun GreetingPreview() {
     Sodv3203_Assign3Theme {
-        DailyTipsApp()
+        DailyRiddlesApp()
     }
 }
