@@ -15,7 +15,6 @@ import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -44,7 +43,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -79,7 +77,7 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
+}Recording-20250319_230451
 
 @Composable
 fun DailyRiddlesApp(modifier: Modifier = Modifier) {
@@ -102,7 +100,7 @@ fun DailyRiddlesApp(modifier: Modifier = Modifier) {
 fun RiddleList(
     dailyRiddleList: List<DailyRiddle>
 ) {
-    LazyColumn(){
+    LazyColumn{
 
         items(items = dailyRiddleList){
             dailyRiddle -> RiddleCard(
@@ -142,7 +140,12 @@ fun RiddleCard(dailyRiddle: DailyRiddle, modifier: Modifier = Modifier){
                 // use color variable
                 .background(color = varColor)
         ){
-            Row(){
+            Text(
+                text = "Day " + dailyRiddle.day.toString(),
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.padding(12.dp)
+            )
+            Row{
                 DailyRiddleHintButton(
                     isVisible = isVisible,
                     onClick = {isVisible = !isVisible}
@@ -174,7 +177,7 @@ fun RiddleCard(dailyRiddle: DailyRiddle, modifier: Modifier = Modifier){
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(12.dp)
             )
-            Row(){
+            Row{
                 DailyRiddleAnswerDropdownButton(
                     expanded = expanded,
                     onClick = {expanded = !expanded}
@@ -185,17 +188,11 @@ fun RiddleCard(dailyRiddle: DailyRiddle, modifier: Modifier = Modifier){
                     modifier = Modifier.padding(12.dp)
                 )
             }
-
-
             if(expanded)RiddleAnswer(
                 answer = stringResource(dailyRiddle.stringResourceRiddleAnswer),
                 modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))
             )
-
-
         }
-
-
     }
 }
 

@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
 data class DailyRiddle(
+    val day: Int,
     @StringRes val stringResourceRiddle: Int,
     @DrawableRes val imageResourceId: Int,
     @StringRes val imageDescription: Int,
